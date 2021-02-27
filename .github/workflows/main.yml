@@ -25,6 +25,9 @@ jobs:
 
 #    - name: attach workspace
 #      run: az ml folder attach -w myworkspace -g myresourcegroup
+#
+    - name: set auto-install of extensions
+      run: az config set extension.use_dynamic_install=yes_without_prompt
 
     - name: retrieve the model
       run: az ml model download -v --model-id "roberta-sequence:1"
