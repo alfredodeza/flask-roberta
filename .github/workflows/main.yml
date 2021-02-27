@@ -23,9 +23,9 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
 
-#    - name: attach workspace
-#      run: az ml folder attach -w myworkspace -g myresourcegroup
-#
+    - name: attach workspace
+      run: az ml folder attach -w ml-ws -g practical-mlops
+
     - name: set auto-install of extensions
       run: az config set extension.use_dynamic_install=yes_without_prompt
 
