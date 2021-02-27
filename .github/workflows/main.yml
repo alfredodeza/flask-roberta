@@ -27,7 +27,7 @@ jobs:
       run: az config set extension.use_dynamic_install=yes_without_prompt
 
     - name: attach workspace
-      run: az ml folder attach -w ml-ws -g practical-mlops
+      run: az ml folder attach -w "ml-ws" -g "practical-mlops"
 
     - name: retrieve the model
       run: az ml model download -v --target-dir "." --model-id "roberta-sequence:1"
