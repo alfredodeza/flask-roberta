@@ -32,11 +32,22 @@ jobs:
     - name: retrieve the model
       run: az ml model download -v --target-dir "." --model-id "roberta-sequence:1"
 
+#    - name: build flask-app and push to dockerhub
+#      id: docker_build
+#      uses: docker/build-push-action@v2
+#      with:
+#        context: ./
+#        file: ./Dockerfile
+#        push: false
+#        tags: alfredodeza/flask-roberta:latest
+#
+#
     - name: build flask-app and push to dockerhub
-      id: docker_build
       uses: docker/build-push-action@v2
       with:
-        context: ./
-        file: ./Dockerfile
-        push: false
-        tags: alfredodeza/flask-roberta:latest
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: ${{ github.repository }}/live-inferencing
+        tag_with_sha: true
+        tag_with_ref: true
