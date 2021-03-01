@@ -42,12 +42,19 @@ jobs:
 #        tags: alfredodeza/flask-roberta:latest
 #
 #
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
     - name: build flask-app and push to dockerhub
       uses: docker/build-push-action@v2
       with:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
-        repository: ${{ github.repository }}/live-inferencing
-        tag_with_sha: true
-        tag_with_ref: true
+        context: ./
+        tags: alfredodeza/flask-roberta:latest
+        #registry: docker.pkg.github.com
+        #repository: ${{ github.repository }}/live-inferencing
+#        tag_with_sha: true
+#        tag_with_ref: true
