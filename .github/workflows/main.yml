@@ -54,6 +54,7 @@ jobs:
       with:
         context: ./
         tags: alfredodeza/flask-roberta:latest
+        push: true
         #registry: docker.pkg.github.com
         #repository: ${{ github.repository }}/live-inferencing
 #        tag_with_sha: true
