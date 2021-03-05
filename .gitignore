@@ -1,4 +1,8 @@
 # Byte-compiled / optimized / DLL files
+#
+*.onnx
+.amlignore
+.azureml
 __pycache__/
 *.py[cod]
 *$py.class
