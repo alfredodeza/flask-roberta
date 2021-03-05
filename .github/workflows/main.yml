@@ -18,3 +18,12 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: set auto-install of extensions
+      run: az config set extension.use_dynamic_install=yes_without_prompt
+
+    - name: attach workspace
+      run: az ml folder attach -w "ml-ws" -g "practical-mlops"
+
+    - name: retrieve the model
+      run: az ml model download -v --targer-dir "." --model-id "roberta-sequence:1"
