@@ -49,11 +49,10 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GH_REGISTRY }}
 
-    - name: build flask-app and push to dockerhub
+    - name: build flask-app and push to registry
       uses: docker/build-push-action@v2
       with:
         context: ./
-        #tags: alfredodeza/flask-roberta:latest
         tags: ghcr.io/alfredodeza/flask-roberta:latest
         push: true
         #registry: docker.pkg.github.com
